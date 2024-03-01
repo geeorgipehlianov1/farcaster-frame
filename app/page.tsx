@@ -14,7 +14,7 @@ const frameMetadata = getFrameMetadata({
     src: 'https://res.cloudinary.com/dwc808l7t/image/upload/v1709108618/Screenshot_2024-02-28_at_10.23.18_nvvx10.png',
     aspectRatio: '1.91:1'
   },
-  postUrl: 'https://2fb8-178-169-248-24.ngrok-free.app/api/frame',
+  postUrl: 'https://farcaster-frame-seven.vercel.app/api/frame',
 });
 
 export const metadata: Metadata = {

@@ -86,9 +86,9 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
             },
           ],
           image: {
-              src: 'https://vercel-og-nextjs-five-roan.vercel.app/api/dynamic-image?username=kraikov', // HERE WILL BE THE GRID IMAGES
+              src: 'https://farcaster-frame-seven.vercel.app/api/dynamic-image?username=kraikov', // HERE WILL BE THE GRID IMAGES
           },
-          postUrl: `https://2fb8-178-169-248-24.ngrok-free.app/api/${chosenTrend}&fid=${body.untrustedData.fid}`, // HERE WE SHOULD PLACE THE FRAME URL
+          postUrl: `https://farcaster-frame-seven.vercel.app/api/${chosenTrend}&fid=${body.untrustedData.fid}`, // HERE WE SHOULD PLACE THE FRAME URL
     }),
   );
 }
