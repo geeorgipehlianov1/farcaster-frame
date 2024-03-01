@@ -12,7 +12,7 @@ const frameMetadata = getFrameMetadata({
     },
   ],
   image: {
-    src: `${baseUrl}/api/competing-trends-image?username=vercel`,
+    src: `${baseUrl}/api/competing-images?username=vercel`,
     aspectRatio: '1.91:1'
   },
   postUrl: `${baseUrl}/api/competing-trends`,
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Trends Market Farcaster Frame',
     description: 'This games aims to add interactivity to buying trends',
-    images: `${baseUrl}/api/competing-trends-image?username=vercel`,
+    images: `${baseUrl}/api/competing-images?username=vercel`,
   },
   other: {
     ...frameMetadata,

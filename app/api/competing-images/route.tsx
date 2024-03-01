@@ -47,16 +47,3 @@ export async function GET(request: Request) {
     },
   );
 }
-
-   // let topTrends: Trend[] = [];
-
-    // THIS CODE WILL BE USE TO GET THE TREND RANK AND HASH (IF NEEDED)
-    // await fetch('https://trends-market-paoph.ondigitalocean.app/trends?type=top30', {method: 'GET'})
-    //     .then(response => response.json())
-    //     .then(data => {
-    //     topTrends = data.trends;
-    //     })
-    //     .catch(err => console.error(err));
-    
-    // const chosenTrendIndex = topTrends.map(trend => trend.trend).indexOf(chosenTrend);
-    // const rank = chosenTrendIndex + 1;
