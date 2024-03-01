@@ -3,7 +3,7 @@ import { NextRequest } from 'next/server'
 
 export const runtime = 'edge';
 
-export default async function handler(req: NextRequest) {
+export default async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl
   const username = searchParams.get('username')
   if (!username) {
