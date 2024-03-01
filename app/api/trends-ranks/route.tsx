@@ -14,36 +14,35 @@ export async function GET(request: Request) {
     });
   }
  
-  return new ImageResponse(
-    (
-      <div
-        style={{
-          display: 'flex',
-          fontSize: 60,
-          color: 'black',
-          background: '#f6f6f6',
-          width: '100%',
-          height: '100%',
-          paddingTop: 50,
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
+ return new ImageResponse(
+  (
+    <div
+      style={{
+     display: 'flex',
+        flexWrap: 'wrap', // Wrap items to the next line if necessary
+        background: '#f6f6f6',
+        width: '100%',
+        height: '100%',
+        padding: '10px', // Padding around the grid
+        boxSizing: 'border-box', // Include padding in the width/height
+        justifyContent: 'center', // Center items horizontally
+        alignItems: 'center', // Center items vertically
+      }}
+    >
+      {Array.from({ length: 200 }).map((_, index) => (
         <img
-          width="256"
-          height="256"
+          key={index}
+          width="30"
+          height="30"
           src={`https://github.com/${username}.png`}
           style={{
-            borderRadius: 128,
+            borderRadius: '4px', // Rounded corners for each image
+            objectFit: 'cover', // Scale the image to cover its entire area
           }}
         />
-        <p>github.com/{username}</p>
-      </div>
-    ),
-    {
-      width: 1200,
-      height: 630,
-    },
-  );
+      ))}
+    </div>
+  ),
+);
+
 }
