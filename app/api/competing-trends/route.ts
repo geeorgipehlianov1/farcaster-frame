@@ -56,7 +56,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
             },
           ],
           image: {
-              src: `${baseUrl}/trends-ranks?username=vercel`
+              src: `${baseUrl}/api/trends-ranks?username=vercel`
           },
           postUrl: `${baseUrl}/api/${chosenTrend}&fid=${body.untrustedData.fid}`,
     }),
