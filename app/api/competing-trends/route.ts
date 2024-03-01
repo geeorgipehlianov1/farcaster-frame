@@ -1,3 +1,4 @@
+import { baseUrl } from '@/app/lib/constants';
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -28,19 +29,6 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         price: string;
     }   
 
-    // let topTrends: Trend[] = [];
-
-    // THIS CODE WILL BE USE TO GET THE TREND RANK AND HASH (IF NEEDED)
-    // await fetch('https://trends-market-paoph.ondigitalocean.app/trends?type=top30', {method: 'GET'})
-    //     .then(response => response.json())
-    //     .then(data => {
-    //     topTrends = data.trends;
-    //     })
-    //     .catch(err => console.error(err));
-    
-    // const chosenTrendIndex = topTrends.map(trend => trend.trend).indexOf(chosenTrend);
-    // const rank = chosenTrendIndex + 1;
-
     // THIS WILL BE USED WHEN USER HAD ALREADY BOUGHT
     // if (true) {
     // return new NextResponse(
@@ -58,24 +46,6 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     // }),
     //     );
     // }
-
-    // THIS WILL BE USED WHEN THE GAME IS EXPIRED
-    //  if (true) {
-    // return new NextResponse(
-    //   getFrameHtmlResponse({
-    //       buttons: [ {
-    //             label: 'This trend-off has expired! Follow @trends to be the first to see future trend-offs',
-    //             action: 'link',
-    //             target: 'https://warpcast.com/georgi',
-    //         },
-    //       ],
-    //       image: {
-    //           src: 'https://res.cloudinary.com/dwc808l7t/image/upload/v1709108618/Screenshot_2024-02-28_at_10.23.18_nvvx10.png', // HERE WILL BE THE GRID IMAGES
-    //       },
-    //       postUrl: `https://0a2a-78-90-27-186.ngrok-free.app/api/${chosenTrend}&fid=${body.untrustedData.fid}`, // HERE WE SHOULD PLACE THE FRAME URL
-    // }),
-    //     );
-  // }
   
     return new NextResponse(
       getFrameHtmlResponse({
@@ -86,9 +56,9 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
             },
           ],
           image: {
-              src: 'https://farcaster-frame-seven.vercel.app/api/dynamic-image?username=kraikov', // HERE WILL BE THE GRID IMAGES
+              src: `${baseUrl}/trends-ranks?username=vercel`
           },
-          postUrl: `https://farcaster-frame-seven.vercel.app/api/${chosenTrend}&fid=${body.untrustedData.fid}`, // HERE WE SHOULD PLACE THE FRAME URL
+          postUrl: `${baseUrl}/api/${chosenTrend}&fid=${body.untrustedData.fid}`,
     }),
   );
 }
