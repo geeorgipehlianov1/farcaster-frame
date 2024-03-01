@@ -1,22 +1,24 @@
-import { ImageResponse } from '@vercel/og'
-import { NextRequest } from 'next/server'
-
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
+import { ImageResponse } from 'next/og';
+ 
 export const runtime = 'edge';
-
-export default async function GET(req: NextRequest) {
-  const { searchParams } = req.nextUrl
-  const username = searchParams.get('username')
+ 
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const username = searchParams.get('username');
   if (!username) {
-    return new ImageResponse(<>{'Visit with "?username=vercel"'}</>, {
+    return new ImageResponse(<>Visit with &quot;?username=vercel&quot;</>, {
       width: 1200,
       height: 630,
-    })
+    });
   }
-
+ 
   return new ImageResponse(
     (
       <div
         style={{
+          display: 'flex',
           fontSize: 60,
           color: 'black',
           background: '#f6f6f6',
@@ -26,13 +28,11 @@ export default async function GET(req: NextRequest) {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          display: 'flex',
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          alt="avatar"
           width="256"
+          height="256"
           src={`https://github.com/${username}.png`}
           style={{
             borderRadius: 128,
@@ -44,6 +44,6 @@ export default async function GET(req: NextRequest) {
     {
       width: 1200,
       height: 630,
-    }
-  )
+    },
+  );
 }
