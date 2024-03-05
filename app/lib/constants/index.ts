@@ -1,1 +1,1 @@
-export * from './baseUrl'
+export * from './common'

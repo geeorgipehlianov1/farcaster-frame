@@ -1,49 +1,35 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from 'next/og';
- 
+
 export const runtime = 'edge';
- 
+
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const username = searchParams.get('username');
-  if (!username) {
-    return new ImageResponse(<>Visit with &quot;?username=vercel&quot;</>, {
-      width: 1200,
-      height: 630,
-    });
-  }
- 
   return new ImageResponse(
     (
       <div
         style={{
           display: 'flex',
-          fontSize: 60,
-          color: 'black',
-          background: '#f6f6f6',
+          background: 'grey',
           width: '100%',
           height: '100%',
-          paddingTop: 50,
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
         }}
       >
-        <img
-          width="256"
-          height="256"
-          src={`https://github.com/${username}.png`}
-          style={{
-            borderRadius: 128,
-          }}
-        />
-        <p>github.com/{username}</p>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          margin: 0,
+          padding: 0,
+        }}>
+          <p style={{ fontSize: '29px', fontWeight: 500, color: '#454647' }}>Current Payout</p>
+          <p style={{fontSize: '42px', fontWeight: 700, color: 'white'}}>100$</p>
+        </div>
       </div>
     ),
-    {
-      width: 1200,
-      height: 630,
-    },
   );
 }

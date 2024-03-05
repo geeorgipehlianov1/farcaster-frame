@@ -5,10 +5,10 @@ import { baseUrl } from './lib/constants';
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
-      label: 'Kalos Trend',
+      label: '#EDCLV2024',
     },
     {
-      label: 'Max Strus Trend',
+      label: '$QORPO',
     },
   ],
   image: {

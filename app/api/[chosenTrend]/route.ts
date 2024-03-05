@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-async function getResponse(req: NextRequest): Promise<NextResponse> {    
+async function getResponse(req: NextRequest): Promise<NextResponse>
+{    
+  console.log(req.url);  
   const lastSlashIndex = req.url.lastIndexOf('/');
   const content = req.url.substring(lastSlashIndex + 1);
   const trendName = decodeURIComponent(content);
