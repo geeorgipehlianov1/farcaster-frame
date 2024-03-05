@@ -1,69 +1,67 @@
 import { baseUrl } from '@/app/lib/constants';
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
+import { frameId } from '@/app/lib/constants';
 
-async function getResponse(req: NextRequest): Promise<NextResponse> {
+async function getResponse(req: NextRequest): Promise<NextResponse>
+{
   const body: FrameRequest = await req.json();
-    const { message } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_ONCHAIN_KIT' });
-    
-    // message?.raw.action.interactor.pfp_url // profile picture
+  const { message } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_ONCHAIN_KIT' });
 
-    let chosenTrend = '';
+  // message?.raw.action.interactor.pfp_url // profile picture
 
-    
-    if (message?.button === 1) {
-        chosenTrend = 'Kalos';
-    } 
+  let chosenTrend = '';
 
-    if(message?.button === 2) {
-        chosenTrend = 'Max Strus';
-    }
-
-    interface Trend {
-        trend: string;
-        trendHash: string;
-        holders: number;
-        shareSupply: number;
-        rank1h: number;
-        rank6h: number;
-        price: string;
-    }   
-
-    // THIS WILL BE USED WHEN USER HAD ALREADY BOUGHT
-    // if (true) {
-    // return new NextResponse(
-    //   getFrameHtmlResponse({
-    //       buttons: [ {
-    //             label: 'You already submitted a response! Follow @trends to be the first to see future trend-offs',
-    //             action: 'link',
-    //             target: 'https://warpcast.com/georgi',
-    //         },
-    //       ],
-    //       image: {
-    //           src: 'https://res.cloudinary.com/dwc808l7t/image/upload/v1709108618/Screenshot_2024-02-28_at_10.23.18_nvvx10.png', // HERE WILL BE THE GRID IMAGES
-    //       },
-    //       postUrl: `https://0a2a-78-90-27-186.ngrok-free.app/api/${chosenTrend}&fid=${body.untrustedData.fid}`, // HERE WE SHOULD PLACE THE FRAME URL
-    // }),
-    //     );
-    // }
+  console.log(message?.raw.action.interactor.follower_count);
   
-    return new NextResponse(
-      getFrameHtmlResponse({
-          buttons: [
-            {
-                label: `Buy ${chosenTrend} Trend`,
-                action: 'post_redirect'
-            },
-          ],
-          image: {
-              src: `${baseUrl}/api/trends-ranks?username=AndonMitev`
-          },
-          postUrl: `${baseUrl}/api/${chosenTrend}&fid=${body.untrustedData.fid}`,
+
+
+  if (message?.button === 1)
+  {
+    chosenTrend = 'Kalos';
+  }
+
+  if (message?.button === 2)
+  {
+    chosenTrend = 'Max Strus';
+  }
+  
+  // THIS WILL BE USED WHEN USER HAD ALREADY BOUGHT
+  // if (true) {
+  // return new NextResponse(
+  //   getFrameHtmlResponse({
+  //       buttons: [ {
+  //             label: 'You already submitted a response! Follow @trends to be the first to see future trend-offs',
+  //             action: 'link',
+  //             target: 'https://warpcast.com/georgi',
+  //         },
+  //       ],
+  //       image: {
+  //           src: 'https://res.cloudinary.com/dwc808l7t/image/upload/v1709108618/Screenshot_2024-02-28_at_10.23.18_nvvx10.png', // HERE WILL BE THE GRID IMAGES
+  //       },
+  //       postUrl: `https://0a2a-78-90-27-186.ngrok-free.app/api/${chosenTrend}&fid=${body.untrustedData.fid}`, // HERE WE SHOULD PLACE THE FRAME URL
+  // }),
+  //     );
+  // }
+
+  return new NextResponse(
+    getFrameHtmlResponse({
+      buttons: [
+        {
+          label: `Buy ${chosenTrend} Trend`,
+          action: 'post_redirect'
+        },
+      ],
+      image: {
+        src: `${baseUrl}/api/trends-ranks?username=AndonMitev`
+      },
+      postUrl: `${baseUrl}/api/${chosenTrend}?fid=${body.untrustedData.fid}&frameId=${frameId}&pfp=${message?.raw.action.interactor.pfp_url}&followers=${message?.raw.action.interactor.follower_count}`,
     }),
   );
 }
 
-export async function POST(req: NextRequest): Promise<Response> {
+export async function POST(req: NextRequest): Promise<Response>
+{
   return getResponse(req);
 }
 

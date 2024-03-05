@@ -13,6 +13,34 @@ export async function GET(request: Request) {
       height: 630,
     });
   }
+
+    interface Trend
+  {
+    trend: string;
+    trendHash: string;
+    holders: number;
+    shareSupply: number;
+    rank1h: number;
+    rank6h: number;
+    price: string;
+  }
+
+  let topTrends: Trend[] = [];
+
+  // THIS CODE WILL BE USE TO GET THE TREND RANK AND HASH (IF NEEDED)
+  const currentTrends = ['#EDCLV2024', '$QORPO'];
+  await fetch('https://trends-market-paoph.ondigitalocean.app/trends?type=top30', { method: 'GET' })
+    .then(response => response.json())
+    .then(data =>
+    {
+      topTrends = data.trends;
+    })
+    .catch(err => console.error(err));
+
+  const trend1Index = topTrends.map(trend => trend.trend).indexOf(currentTrends[0]);
+  const trend2Index = topTrends.map(trend => trend.trend).indexOf(currentTrends[0]);
+  const trendRank1 = trend1Index + 1;
+  const trendRank2 = trend2Index + 1;
  
  return new ImageResponse(
   (
