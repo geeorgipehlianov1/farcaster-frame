@@ -10,24 +10,28 @@ async function getResponse(req: NextRequest): Promise<NextResponse>
 
   let chosenTrend = '';
 
-  if (message?.button === 1) {
+  if (message?.button === 1)
+  {
     chosenTrend = `${FIRST_TREND}`;
   }
 
-  if (message?.button === 2) {
+  if (message?.button === 2)
+  {
     chosenTrend = `${SECOND_TREND}`;
   }
 
-  let result = {voted: false}
+  let result = { voted: false }
 
   await fetch(`${TRENDS_MARKET_BE_URL}/frames/voted/${FRAME_ID}/${body.untrustedData.fid}`, {
     method: 'GET'
   }).then(response => response.json())
-    .then(data => {
-      result.voted = data.voted;      
-  });  
+    .then(data =>
+    {
+      result.voted = data.voted;
+    });
 
-  if (result.voted) {
+  if (result.voted)
+  {
     return new NextResponse(
       getFrameHtmlResponse({
         buttons: [{
@@ -35,13 +39,14 @@ async function getResponse(req: NextRequest): Promise<NextResponse>
         },
         ],
         image: {
-         src: `https://res.cloudinary.com/dwc808l7t/image/upload/v1709728121/game-launcher/trends-ranks_yptwju.svg`
+          src: `https://res.cloudinary.com/dwc808l7t/image/upload/v1709728121/game-launcher/trends-ranks_yptwju.svg`,
+          aspectRatio: '1:1'
         },
         postUrl: `${BASE_URL}/api/trend-bought`,
       }),
     );
   }
-  
+
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
