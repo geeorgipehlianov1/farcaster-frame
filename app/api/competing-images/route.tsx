@@ -7,9 +7,7 @@ import satori from 'satori'
 export async function GET(request: Request) {
   return new ImageResponse(
     <div
-  style={{
-    height: '100%',
-    width: '100%',
+    style={{
     display: 'flex',
     textAlign: 'center',
     flexDirection: 'column',
