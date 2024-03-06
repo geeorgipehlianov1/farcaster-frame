@@ -1,10 +1,49 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from 'next/og';
-
-export const runtime = 'edge';
+import type {SatoriOptions} from 'satori'
+import satori from 'satori'
 
 export async function GET(request: Request) {
+  const fontSans = (baseUrl: string) =>
+  fetch(new URL(`${baseUrl}/fonts/Inter-ExtraBold.otf`)).then((res) =>
+    res.arrayBuffer()
+  )
+  const fontSansData = await fontSans('https://nextjs.org');
+  const options: SatoriOptions = {
+    width: 1200,
+    height: 1200,
+    fonts: [
+      {
+        name: 'Inter',
+        data: fontSansData,
+        style: 'normal',
+      },
+    ],
+  }
+
+  // Design the image and generate an SVG with "satori"
+  const svg = await satori(
+    <div
+      style={{
+        width: options.width,
+        height: options.height,
+        background: 'linear-gradient( 135deg, #FD6585 10%, #0D25B9 100%)',
+        color: 'white',
+        fontFamily: 'Inter',
+        fontSize: 100,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}
+    >
+      <div>Title</div>
+    </div>,
+    options
+  )
+
+
+
   return new ImageResponse(
     (
       <div
@@ -18,17 +57,7 @@ export async function GET(request: Request) {
           alignItems: 'center',
         }}
       >
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexDirection: 'column',
-          margin: 0,
-          padding: 0,
-        }}>
-          <p style={{ fontSize: '29px', fontWeight: 500, color: '#454647' }}>Current Payout</p>
-          <p style={{fontSize: '42px', fontWeight: 700, color: 'white'}}>100$</p>
-        </div>
+        <svg />
       </div>
     ),
   );

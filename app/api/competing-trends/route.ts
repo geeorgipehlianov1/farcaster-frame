@@ -1,48 +1,50 @@
-import { baseUrl } from '@/app/lib/constants';
+import { BASE_URL, FIRST_TREND, FRAME_ID, SECOND_TREND, TRENDS_MARKET_BE_URL } from '@/app/lib/constants';
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
-import { frameId } from '@/app/lib/constants';
 
 async function getResponse(req: NextRequest): Promise<NextResponse>
 {
   const body: FrameRequest = await req.json();
   const { message } = await getFrameMessage(body, { neynarApiKey: 'NEYNAR_ONCHAIN_KIT' });
 
-  // message?.raw.action.interactor.pfp_url // profile picture
 
   let chosenTrend = '';
 
-  console.log(message?.raw.action.interactor.follower_count);
-  
-
-
-  if (message?.button === 1)
-  {
-    chosenTrend = 'Kalos';
+  if (message?.button === 1) {
+    chosenTrend = `${FIRST_TREND}`;
   }
 
-  if (message?.button === 2)
-  {
-    chosenTrend = 'Max Strus';
+  if (message?.button === 2) {
+    chosenTrend = `${SECOND_TREND}`;
+  }
+
+  let result = {voted: false}
+
+  await fetch(`${TRENDS_MARKET_BE_URL}/frames/voted/${FRAME_ID}/${body.untrustedData.fid}`, {
+    method: 'GET'
+  }).then(response => response.json())
+    .then(data => {
+      result.voted = data.voted;
+      console.log(data);
+      
+  });  
+
+  if (result.voted) {
+    return new NextResponse(
+      getFrameHtmlResponse({
+        buttons: [{
+          label: `Buy ${chosenTrend} Trend`,
+        },
+        ],
+        image: {
+         src: `${BASE_URL}/api/trends-ranks`
+        },
+        postUrl: `${BASE_URL}/api/trend-bought`,
+      }),
+    );
   }
   
-  // THIS WILL BE USED WHEN USER HAD ALREADY BOUGHT
-  // if (true) {
-  // return new NextResponse(
-  //   getFrameHtmlResponse({
-  //       buttons: [ {
-  //             label: 'You already submitted a response! Follow @trends to be the first to see future trend-offs',
-  //             action: 'link',
-  //             target: 'https://warpcast.com/georgi',
-  //         },
-  //       ],
-  //       image: {
-  //           src: 'https://res.cloudinary.com/dwc808l7t/image/upload/v1709108618/Screenshot_2024-02-28_at_10.23.18_nvvx10.png', // HERE WILL BE THE GRID IMAGES
-  //       },
-  //       postUrl: `https://0a2a-78-90-27-186.ngrok-free.app/api/${chosenTrend}&fid=${body.untrustedData.fid}`, // HERE WE SHOULD PLACE THE FRAME URL
-  // }),
-  //     );
-  // }
+
 
   return new NextResponse(
     getFrameHtmlResponse({
@@ -53,9 +55,9 @@ async function getResponse(req: NextRequest): Promise<NextResponse>
         },
       ],
       image: {
-        src: `${baseUrl}/api/trends-ranks?username=AndonMitev`
+        src: `${BASE_URL}/api/trends-ranks`
       },
-      postUrl: `${baseUrl}/api/${chosenTrend}?fid=${body.untrustedData.fid}&frameId=${frameId}&pfp=${message?.raw.action.interactor.pfp_url}&followers=${message?.raw.action.interactor.follower_count}`,
+      postUrl: `${BASE_URL}/api/redirect-screen?chosenTrend=${chosenTrend}&fid=${body.untrustedData.fid}&pfp=${message?.raw.action.interactor.pfp_url}&followers=${message?.raw.action.interactor.follower_count}`,
     }),
   );
 }
