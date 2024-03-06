@@ -12,7 +12,7 @@ export async function GET(request: Request) {
         textAlign: 'center',
         flexDirection: 'column',
         flexWrap: 'nowrap',
-        backgroundImage: 'url(https://res.cloudinary.com/dwc808l7t/image/upload/v1709709855/game-launcher/background_gfb8pt.svg)',
+        // backgroundImage: 'url(https://res.cloudinary.com/dwc808l7t/image/upload/v1709709855/game-launcher/background_gfb8pt.svg)',
       }}
     >
       <img
@@ -41,7 +41,7 @@ export async function GET(request: Request) {
     </div>,
     {
       width: 600,
-      height: 600,
+      height: 1000,
     }
   )
 }
