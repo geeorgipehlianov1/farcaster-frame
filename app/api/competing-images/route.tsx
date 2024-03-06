@@ -7,7 +7,9 @@ import satori from 'satori'
 export async function GET(request: Request) {
   return new ImageResponse(
     <div
-    style={{
+      style={{
+        width: '100%',
+        height: '100%',
     display: 'flex',
     textAlign: 'center',
     flexDirection: 'column',
@@ -38,6 +40,11 @@ export async function GET(request: Request) {
     <b style={{fontSize: '25px', color:'#76787A'}}>Current Payout </b>
     <b style={{fontSize: '42px', color: 'white'}}>100$</b>
   </div>
-</div>
+    </div>
+    ,
+    {
+      width: 620,
+      height: 620,
+    }
   );
 }
