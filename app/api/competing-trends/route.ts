@@ -24,9 +24,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse>
     method: 'GET'
   }).then(response => response.json())
     .then(data => {
-      result.voted = data.voted;
-      console.log(data);
-      
+      result.voted = data.voted;      
   });  
 
   if (result.voted) {
@@ -37,15 +35,13 @@ async function getResponse(req: NextRequest): Promise<NextResponse>
         },
         ],
         image: {
-         src: `${BASE_URL}/api/trends-ranks`
+         src: `https://res.cloudinary.com/dwc808l7t/image/upload/v1709728121/game-launcher/trends-ranks_yptwju.svg`
         },
         postUrl: `${BASE_URL}/api/trend-bought`,
       }),
     );
   }
   
-
-
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
@@ -55,7 +51,8 @@ async function getResponse(req: NextRequest): Promise<NextResponse>
         },
       ],
       image: {
-        src: `${BASE_URL}/api/trends-ranks`
+        src: `https://res.cloudinary.com/dwc808l7t/image/upload/v1709728121/game-launcher/trends-ranks_yptwju.svg`,
+        aspectRatio: '1:1'
       },
       postUrl: `${BASE_URL}/api/redirect-screen?chosenTrend=${chosenTrend}&fid=${body.untrustedData.fid}&pfp=${message?.raw.action.interactor.pfp_url}&followers=${message?.raw.action.interactor.follower_count}`,
     }),
