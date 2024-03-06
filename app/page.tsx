@@ -12,7 +12,7 @@ const frameMetadata = getFrameMetadata({
     },
   ],
   image: {
-    src: `${BASE_URL}/api/competing-images`,
+    src: `https://res.cloudinary.com/dwc808l7t/image/upload/v1709733787/game-launcher/competing_aawztl.svg`,
     aspectRatio: '1:1'
   },
   postUrl: `${BASE_URL}/api/competing-trends`,
