@@ -13,7 +13,7 @@ const frameMetadata = getFrameMetadata({
   ],
   image: {
     src: `${BASE_URL}/api/competing-images`,
-    aspectRatio: '1.91:1'
+    aspectRatio: '1:1'
   },
   postUrl: `${BASE_URL}/api/competing-trends`,
 });
