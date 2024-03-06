@@ -12,7 +12,7 @@ const frameMetadata = getFrameMetadata({
     },
   ],
   image: {
-    src: `https://www.google.com/search?sca_esv=02097b259e5129ad&q=google+image&tbm=isch&source=lnms&sa=X&ved=2ahUKEwiq9ZeN69yEAxVMSvEDHfXSBqIQ0pQJegQIDRAB&biw=1440&bih=743&dpr=2#imgrc=bI7-ui1iO6yF-M`,
+    src: `${BASE_URL}/api/competing-images`,
     aspectRatio: '1.91:1'
   },
   postUrl: `${BASE_URL}/api/competing-trends`,
