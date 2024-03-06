@@ -1,21 +1,21 @@
 import { getFrameMetadata } from '@coinbase/onchainkit/frame';
 import { Metadata } from 'next';
-import { baseUrl } from './lib/constants';
+import { BASE_URL, FIRST_TREND, SECOND_TREND } from './lib/constants';
 
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
-      label: '#EDCLV2024',
+      label: `${FIRST_TREND}`,
     },
     {
-      label: '$QORPO',
+      label: `${SECOND_TREND}`,
     },
   ],
   image: {
-    src: `${baseUrl}/api/competing-images?username=geeorgipehlianov1`,
+    src: `https://www.google.com/search?sca_esv=02097b259e5129ad&q=google+image&tbm=isch&source=lnms&sa=X&ved=2ahUKEwiq9ZeN69yEAxVMSvEDHfXSBqIQ0pQJegQIDRAB&biw=1440&bih=743&dpr=2#imgrc=bI7-ui1iO6yF-M`,
     aspectRatio: '1.91:1'
   },
-  postUrl: `${baseUrl}/api/competing-trends`,
+  postUrl: `${BASE_URL}/api/competing-trends`,
 });
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Trends Market Farcaster Frame',
     description: 'This games aims to add interactivity to buying trends',
-    images: `${baseUrl}/api/competing-images?username=geeorgipehlianov1`,
+    images: `https://www.google.com/search?sca_esv=02097b259e5129ad&q=google+image&tbm=isch&source=lnms&sa=X&ved=2ahUKEwiq9ZeN69yEAxVMSvEDHfXSBqIQ0pQJegQIDRAB&biw=1440&bih=743&dpr=2#imgrc=bI7-ui1iO6yF-M`,
   },
   other: {
     ...frameMetadata,
@@ -39,21 +39,28 @@ export default function Home()
   );
 }
 
+// const frameMetadata = getFrameMetadata({
+//   buttons: [
+//     label: `Follow @trends`,
+//     action: 'link',
+//     target: 'https://warpcast.com/~/channel/perl'
+//   ],
+//   image: {
+//     src: `${BASE_URL}/api/trend-expired`,
+//     aspectRatio: '1.91:1'
+//   },
+// });
 
-  // THIS WILL BE USED WHEN THE GAME IS EXPIRED
-    //  if (true) {
-    // return new NextResponse(
-    //   getFrameHtmlResponse({
-    //       buttons: [ {
-    //             label: 'This trend-off has expired! Follow @trends to be the first to see future trend-offs',
-    //             action: 'link',
-    //             target: 'https://warpcast.com/georgi',
-    //         },
-    //       ],
-    //       image: {
-    //           src: 'https://res.cloudinary.com/dwc808l7t/image/upload/v1709108618/Screenshot_2024-02-28_at_10.23.18_nvvx10.png', // HERE WILL BE THE GRID IMAGES
-    //       },
-    //       postUrl: `https://0a2a-78-90-27-186.ngrok-free.app/api/${chosenTrend}&fid=${body.untrustedData.fid}`, // HERE WE SHOULD PLACE THE FRAME URL
-    // }),
-    //     );
-  // }
+
+// export const metadata: Metadata = {
+//   title: 'Trends Market Farcaster Frame',
+//   description: 'This games aims to add interactivity to buying trends',
+//   openGraph: {
+//     title: 'Trends Market Farcaster Frame',
+//     description: 'This games aims to add interactivity to buying trends',
+//     images: `https://www.google.com/search?sca_esv=02097b259e5129ad&q=google+image&tbm=isch&source=lnms&sa=X&ved=2ahUKEwiq9ZeN69yEAxVMSvEDHfXSBqIQ0pQJegQIDRAB&biw=1440&bih=743&dpr=2#imgrc=bI7-ui1iO6yF-M`, // NOT SURE IF NEEDED
+//   },
+//   other: {
+//     ...frameMetadata,
+//   },
+// };
