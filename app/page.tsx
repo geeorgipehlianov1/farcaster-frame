@@ -12,7 +12,7 @@ const frameMetadata = getFrameMetadata({
     },
   ],
   image: {
-    src: `https://res.cloudinary.com/dwc808l7t/image/upload/v1709726903/game-launcher/competing-trends_ko3ja7.svg`,
+    src: `https://res.cloudinary.com/dwc808l7t/image/upload/v1709733787/game-launcher/competing_aawztl.svg`,
     aspectRatio: '1:1'
   },
   postUrl: `${BASE_URL}/api/competing-trends`,
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Trends Market Farcaster Frame',
     description: 'This games aims to add interactivity to buying trends',
-    images: `https://res.cloudinary.com/dwc808l7t/image/upload/v1709726903/game-launcher/competing-trends_ko3ja7.svg`,
+    images: `https://res.cloudinary.com/dwc808l7t/image/upload/v1709733787/game-launcher/competing_aawztl.svg`,
   },
   other: {
     ...frameMetadata,
