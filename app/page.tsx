@@ -31,23 +31,17 @@ export const metadata: Metadata = {
   },
 };
 
-
-export default function Home()
-{
-  return (
-   <h1>Hello From My Personal Farcaster Frame</h1>
-  );
-}
-
+// FOR EXPIRED TREND
 // const frameMetadata = getFrameMetadata({
-//   buttons: [
+//   buttons: [{
 //     label: `Follow @trends`,
 //     action: 'link',
 //     target: 'https://warpcast.com/~/channel/perl'
+//   }
 //   ],
 //   image: {
-//     src: `${BASE_URL}/api/trend-expired`,
-//     aspectRatio: '1.91:1'
+//     src: 'https://res.cloudinary.com/dwc808l7t/image/upload/v1709728690/game-launcher/expired_wra8ir.svg',
+//     aspectRatio: '1:1'
 //   },
 // });
 
@@ -58,9 +52,19 @@ export default function Home()
 //   openGraph: {
 //     title: 'Trends Market Farcaster Frame',
 //     description: 'This games aims to add interactivity to buying trends',
-//     images: `https://www.google.com/search?sca_esv=02097b259e5129ad&q=google+image&tbm=isch&source=lnms&sa=X&ved=2ahUKEwiq9ZeN69yEAxVMSvEDHfXSBqIQ0pQJegQIDRAB&biw=1440&bih=743&dpr=2#imgrc=bI7-ui1iO6yF-M`, // NOT SURE IF NEEDED
+//     images: 'https://res.cloudinary.com/dwc808l7t/image/upload/v1709728690/game-launcher/expired_wra8ir.svg',
 //   },
 //   other: {
 //     ...frameMetadata,
 //   },
 // };
+
+
+
+export default function Home()
+{
+  return (
+   <h1>Hello From My Personal Farcaster Frame</h1>
+  );
+}
+
