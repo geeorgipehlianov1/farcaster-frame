@@ -2,13 +2,11 @@
 /* eslint-disable @next/next/no-img-element */
 import { FIRST_TREND, SECOND_TREND } from '@/app/lib/constants';
 import { ImageResponse } from 'next/og';
-// App router includes @vercel/og.
-// No need to install it.
+
 
 export const runtime = 'edge';
 
-export async function GET()
-{
+export async function GET() {
   const interExtrabold = fetch(
     new URL('../../../public/Inter-ExtraBold.ttf', import.meta.url)
   ).then((res) => res.arrayBuffer())
@@ -28,17 +26,17 @@ export async function GET()
           textAlign: 'center',
           flexDirection: 'column',
           flexWrap: 'nowrap',
-          backgroundImage: 'url(https://res.cloudinary.com/dwc808l7t/image/upload/v1709812924/farcaster-frames/background_tylikk.png)',
+          backgroundImage: 'url(https://res.cloudinary.com/dwc808l7t/image/upload/v1709709855/game-launcher/background_gfb8pt.svg)',
         }}
       >
         <img
-          src='https://res.cloudinary.com/dwc808l7t/image/upload/v1709812996/farcaster-frames/logo_s6yzop.png'
+          src='https://res.cloudinary.com/dwc808l7t/image/upload/v1709710275/game-launcher/logo_t4edcj.svg'
           width='75px'
           height='75px'
           style={{
             position: 'absolute',
-            top: '25px', // Adjust as needed
-            left: '20px', // Adjust as needed
+            top: '25px',
+            left: '20px',
           }}
         />
         <div
