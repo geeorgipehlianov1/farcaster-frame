@@ -78,7 +78,7 @@ export async function GET() {
                     </div>
                     <p style={{ color: '#76787A', width: '400px', fontSize: '24px', marginTop: '60px' }}>To qualify to win, you need to buy the trend on trends.market</p>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '20px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <img
                         style={{ backgroundColor: '#3c3c3c', borderRadius: '50px'}}
                         src='https://res.cloudinary.com/dwc808l7t/image/upload/v1709730095/game-launcher/person_ink60b.svg' width='57px' height='57px' />
