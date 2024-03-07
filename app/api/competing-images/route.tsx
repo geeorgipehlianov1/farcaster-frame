@@ -21,14 +21,6 @@ export async function GET()
     new URL('../../../public/Inter-Medium.ttf', import.meta.url)
   ).then((res) => res.arrayBuffer())
 
-  const interExtraLight = fetch(
-    new URL('../../../public/Inter-ExtraLight.ttf', import.meta.url)
-  ).then((res) => res.arrayBuffer())
-
-  const interSemiBold = fetch(
-    new URL('../../../public/Inter-SemiBold.ttf', import.meta.url)
-  ).then((res) => res.arrayBuffer())
-
   return new ImageResponse(
     (
       <div
@@ -117,17 +109,6 @@ export async function GET()
         {
           name: 'Inter Medium',
           data: await interMedium,
-          style: 'normal',
-        },
-        {
-          name: 'Inter',
-          data: await interExtraLight,
-          style: 'normal',
-          weight: 200
-        },
-        {
-          name: 'Inter Semi Bold',
-          data: await interSemiBold,
           style: 'normal',
         },
         {
