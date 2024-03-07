@@ -8,8 +8,8 @@ import { ImageResponse } from 'next/og';
 export const runtime = 'edge';
 
 export async function GET() {
-  const interExtraBold = fetch(
-    new URL('../../../public/Inter-ExtraBold.ttf', import.meta.url)
+  const interBold = fetch(
+    new URL('../../../public/Inter-Bold.ttf', import.meta.url)
   ).then((res) => res.arrayBuffer())
 
   // const currentPayout = await getCurrentPayout();
@@ -50,7 +50,7 @@ export async function GET() {
         >
           <img src='https://res.cloudinary.com/dwc808l7t/image/upload/v1709812588/farcaster-frames/single-fake-gold-dollar-coin_2_glamru.png' width='80px' height='80px' />
           <b style={{ fontSize: '25px', color: '#76787A', fontWeight: 'bolder', fontFamily: 'Inter Medium' }}>Current Payout </b>
-          <b style={{ fontSize: '42px', color: 'white'}}><strong>100$</strong> </b>
+          <b style={{ fontSize: '42px', color: 'white'}}><strong>100$</strong></b>
 
           <div style={{ display: 'flex', marginTop: '50px' }}>
 
@@ -96,8 +96,8 @@ export async function GET() {
       height: 600,
       fonts: [
         {
-          name: 'Inter Extra Bold',
-          data: await interExtraBold,
+          name: 'Inter',
+          data: await interBold,
           style: 'normal',
         },
       ],
