@@ -39,7 +39,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse>
           },
           ],
           image: {
-            src: `${BASE_URL}/api/trends-rank`,
+            src: `${BASE_URL}/api/trends-rank?chosenTrend=${chosenTrend}`,
             aspectRatio: '1:1'
           },
           postUrl: `${BASE_URL}/api/trend-bought`,
@@ -56,7 +56,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse>
           },
         ],
         image: {
-          src: `${BASE_URL}/api/trends-rank`,
+          src: `${BASE_URL}/api/trends-rank?chosenTrend=${chosenTrend}`,
           aspectRatio: '1:1'
         },
         postUrl: `${BASE_URL}/api/redirect-screen?chosenTrend=${chosenTrend}&fid=${body.untrustedData.fid}&pfp=${message?.raw.action.interactor.pfp_url}&followers=${message?.raw.action.interactor.follower_count}`,
