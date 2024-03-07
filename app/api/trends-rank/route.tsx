@@ -44,7 +44,7 @@ export async function GET() {
                     <b style={{ fontSize: '30px', color: '#76787A' }}>Current Payout </b>
                     <b style={{ fontSize: '42px', color: 'white' }}>100$</b>
 
-                    <div style={{ display: 'flex', marginTop: '50px' }}>
+                    <div style={{ display: 'flex', marginTop: '30px' }}>
 
                         <div style={{ display: 'flex', backgroundColor: '#1DA1F2', borderRadius: '20px', height: '60px', position: 'relative', top: '-20px', width: '200px' }}>
 
