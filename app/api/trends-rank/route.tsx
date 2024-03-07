@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import { FIRST_TREND, SECOND_TREND, } from '@/app/lib/constants';
-import { getChosenTrend, getTrends } from '@/app/lib/services/trends';
+import { getChosenTrend, getCurrentPotSize, getTrends } from '@/app/lib/services/trends';
 import { Trend } from '@/app/lib/types';
 import { getTrendsRanks } from '@/app/lib/utils';
 import { getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
@@ -16,6 +16,8 @@ export async function GET(req: NextRequest)
     {
         const newUrl = new URL(req.nextUrl)
         const trendName = newUrl.searchParams.get('chosenTrend')
+
+        // const currentPotSize = await getCurrentPotSize();
 
         let topTrends: Trend[] = await getTrends();
 

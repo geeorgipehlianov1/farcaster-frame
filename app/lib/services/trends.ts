@@ -30,6 +30,28 @@ export const getChosenTrend = async (trendName: string) =>  {
     }
 }
 
+export const getCurrentPotSize = async () => {
+    
+    const response = await fetch(`${TRENDS_MARKET_BE_URL}/frames/pot`, { method: 'GET' })  
+
+    if (!response.ok) {
+        throw new Error('Failed get current pot size');
+    }
+
+    return response.json()
+}
+
+export const getCurrentPayout = async () => {
+       
+    const response = await fetch(`${TRENDS_MARKET_BE_URL}/frames/payout`, { method: 'GET' })  
+
+    if (!response.ok) {
+        throw new Error('Failed get current payout');
+    }
+
+    return response.json()
+}
+
 export const getVotedStatus = async (fid: number) =>
 {
     const response = await fetch(`${TRENDS_MARKET_BE_URL}/frames/voted/${FRAME_ID}/${fid}`, {method: 'GET'})
