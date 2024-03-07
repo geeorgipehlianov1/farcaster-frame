@@ -17,6 +17,10 @@ export async function GET(req: NextRequest)
         const newUrl = new URL(req.nextUrl)
         const trendName = newUrl.searchParams.get('chosenTrend')
 
+          const interBold = fetch(
+    new URL('../../../public/Inter-Bold.ttf', import.meta.url)
+  ).then((res) => res.arrayBuffer())
+
         // const currentPotSize = await getCurrentPotSize();
 
         let topTrends: Trend[] = await getTrends();
@@ -25,6 +29,9 @@ export async function GET(req: NextRequest)
 
 
         const chosenTrend: any[] = await getChosenTrend(String(trendName));
+
+        console.log(chosenTrend);
+        
         
 
         return new ImageResponse(
@@ -82,7 +89,7 @@ export async function GET(req: NextRequest)
 
                             <b style={{ fontSize: '90px', color: '#1DA1F2' }}>VS</b>
 
-                            <div style={{ display: 'flex', backgroundColor: '#1DA1F2', borderRadius: '20px', height: '55px', position: 'relative', bottom: '-105px', left: '-40px', width: '200px', }}>
+                            <div style={{ display: 'flex', backgroundColor: '#1DA1F2', borderRadius: '20px', height: '55px', position: 'relative', bottom: '-95px', left: '-40px', width: '200px', }}>
 
                                 <div style={{
                                     display: 'flex', alignItems: 'center',
@@ -102,9 +109,9 @@ export async function GET(req: NextRequest)
 
 
                         </div>
-                        <p style={{ color: '#76787A', width: '400px', fontSize: '24px', marginTop: '60px' }}>To qualify to win, you need to buy the trend on trends.market</p>
+                        <p style={{ color: '#76787A', width: '400px', fontSize: '24px', marginTop: '80px' }}>To qualify to win, you need to buy the trend on trends.market</p>
                     </div>
-                   {chosenTrend.length > 0 && <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                   {chosenTrend.length > 0 && <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '20px' }}>
                         <img
                             style={{ backgroundColor: '#3c3c3c', borderRadius: '50px' }}
                             src={chosenTrend[0] ? chosenTrend[0].pfp : 'https://res.cloudinary.com/dwc808l7t/image/upload/v1709730095/game-launcher/person_ink60b.svg'} width='57px' height='57px' />
@@ -121,6 +128,13 @@ export async function GET(req: NextRequest)
             {
                 width: 600,
                 height: 600,
+                fonts: [
+                    {
+                        name: 'Inter',
+                        data: await interBold,
+                        style: 'normal',
+                    },
+                ]
             },
         );
     } catch (error)
