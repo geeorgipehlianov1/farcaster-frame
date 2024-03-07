@@ -13,10 +13,6 @@ export async function GET()
     new URL('../../../public/Inter-ExtraBold.ttf', import.meta.url)
   ).then((res) => res.arrayBuffer())
 
-  const interBold = fetch(
-    new URL('../../../public/Inter-Bold.ttf', import.meta.url)
-  ).then((res) => res.arrayBuffer())
-
   const interMedium = fetch(
     new URL('../../../public/Inter-Medium.ttf', import.meta.url)
   ).then((res) => res.arrayBuffer())
@@ -56,7 +52,7 @@ export async function GET()
         >
           <img src='https://res.cloudinary.com/dwc808l7t/image/upload/v1709812588/farcaster-frames/single-fake-gold-dollar-coin_2_glamru.png' width='80px' height='80px' />
           <b style={{ fontSize: '25px', color: '#76787A', fontWeight: 'bolder', fontFamily: 'Inter Medium' }}>Current Payout </b>
-          <b style={{ fontSize: '42px', color: 'white', fontFamily: 'Inter Bold' }}>100$</b>
+          <b style={{ fontSize: '42px', color: 'white', fontFamily: 'Inter Extra Bold' }}>100$</b>
 
           <div style={{ display: 'flex', marginTop: '50px' }}>
 
@@ -75,7 +71,7 @@ export async function GET()
 
             </div>
 
-            <b style={{ fontSize: '80px', color: '#1DA1F2', fontWeight: 800, fontFamily: 'Inter Bold' }}>VS</b>
+            <b style={{ fontSize: '80px', color: '#1DA1F2', fontWeight: 800, fontFamily: 'Inter Extra Bold' }}>VS</b>
 
             <div style={{ display: 'flex', backgroundColor: '#1DA1F2', borderRadius: '20px', height: '55px', position: 'relative', bottom: '-84px', left: '-40px', width: '200px', }}>
 
@@ -110,14 +106,7 @@ export async function GET()
           name: 'Inter Medium',
           data: await interMedium,
           style: 'normal',
-        },
-        {
-          name: 'Inter Bold',
-          data: await interBold,
-          style: 'normal',
-
-        },
-
+        }
       ],
     },
   );
