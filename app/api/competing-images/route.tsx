@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import { FIRST_TREND, SECOND_TREND } from '@/app/lib/constants';
+import { getCurrentPayout } from '@/app/lib/services/trends';
 import { ImageResponse } from 'next/og';
 
 
@@ -10,6 +11,8 @@ export async function GET() {
   const interExtraBold = fetch(
     new URL('../../../public/Inter-ExtraBold.ttf', import.meta.url)
   ).then((res) => res.arrayBuffer())
+
+  // const currentPayout = await getCurrentPayout();
 
 
   return new ImageResponse(
