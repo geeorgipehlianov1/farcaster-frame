@@ -74,7 +74,7 @@ export async function GET() {
                 display: 'flex', alignItems: 'center',
                 justifyContent: 'center', backgroundColor: '#2C2D2E', position: 'relative', height: '60px', borderRadius: '20px', top: '-10px', right: '-8px', width: '200px'
               }}>
-                <p style={{ color: 'white', marginLeft: '10px' }}>A</p>
+                <p style={{ color: 'white', marginLeft: '10px' }}>B</p>
                 <p style={{ color: 'white', marginTop: '15px', marginLeft: '6px', fontFamily: 'Inter Medium' }}>{SECOND_TREND}</p>
               </div>
 
