@@ -39,7 +39,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse>
           },
           ],
           image: {
-            src: `https://res.cloudinary.com/dwc808l7t/image/upload/v1709731295/game-launcher/ranks_hwkkhl.svg`,
+            src: `${BASE_URL}/api/trends-rank`,
             aspectRatio: '1:1'
           },
           postUrl: `${BASE_URL}/api/trend-bought`,
@@ -56,16 +56,13 @@ async function getResponse(req: NextRequest): Promise<NextResponse>
           },
         ],
         image: {
-          src: `https://res.cloudinary.com/dwc808l7t/image/upload/v1709731295/game-launcher/ranks_hwkkhl.svg`,
+          src: `${BASE_URL}/api/trends-rank`,
           aspectRatio: '1:1'
         },
         postUrl: `${BASE_URL}/api/redirect-screen?chosenTrend=${chosenTrend}&fid=${body.untrustedData.fid}&pfp=${message?.raw.action.interactor.pfp_url}&followers=${message?.raw.action.interactor.follower_count}`,
       }),
     );
-  } catch (error)
-  {
-    console.log('here');
-    
+  } catch (error) {    
      return new NextResponse(
       getFrameHtmlResponse({
         buttons: [
