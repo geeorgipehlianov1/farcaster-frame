@@ -29,7 +29,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse>
 
     let result = { voted: false }
   
-    await fetch(`${TRENDS_MARKET_BE_URL}/frames/voted/${FRAME_ID}/${body.untrustedData.fid}`, {
+    await fetch(`${TRENDS_MARKET_BE_URL}//voted/${FRAME_ID}/${body.untrustedData.fid}`, {
       method: 'GET'
     }).then(response => response.json())
       .then(data =>
