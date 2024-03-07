@@ -1,4 +1,5 @@
 import { BASE_URL, FIRST_TREND, FRAME_ID, SECOND_TREND, TRENDS_MARKET_BE_URL } from '@/app/lib/constants';
+import { getVotedStatus } from '@/app/lib/services/trends';
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -20,7 +21,12 @@ async function getResponse(req: NextRequest): Promise<NextResponse>
     {
       chosenTrend = `${SECOND_TREND}`;
     }
-  
+ 
+
+    // const result1 = await getVotedStatus(body.untrustedData.fid)
+    // console.log(result1);
+    
+
     let result = { voted: false }
   
     await fetch(`${TRENDS_MARKET_BE_URL}/frames/voted/${FRAME_ID}/${body.untrustedData.fid}`, {

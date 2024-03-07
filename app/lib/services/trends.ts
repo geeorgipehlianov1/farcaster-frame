@@ -29,3 +29,11 @@ export const getChosenTrend = async (trendName: string) =>  {
         return []
     }
 }
+
+export const getVotedStatus = async (fid: number) =>
+{
+    const response = await fetch(`${TRENDS_MARKET_BE_URL}/frames/voted/${FRAME_ID}/${fid}`, {method: 'GET'})
+    const result = response.json();
+
+    return result;
+}
