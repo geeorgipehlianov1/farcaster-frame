@@ -7,8 +7,8 @@ import { ImageResponse } from 'next/og';
 export const runtime = 'edge';
 
 export async function GET() {
-  const interBold = fetch(
-    new URL('../../../public/Inter-Bold.ttf', import.meta.url)
+  const interExtraBold = fetch(
+    new URL('../../../public/Inter-ExtraBold.ttf', import.meta.url)
   ).then((res) => res.arrayBuffer())
 
 
@@ -93,8 +93,8 @@ export async function GET() {
       height: 600,
       fonts: [
         {
-          name: 'Inter',
-          data: await interBold,
+          name: 'Inter Extra Bold',
+          data: await interExtraBold,
           style: 'normal',
         },
       ],
